@@ -19,5 +19,14 @@
     <Root level="INFO">
       <AppenderRef ref="CONSOLE" />
     </Root>
+    <Logger name="jdbc.audit" level="WARN">
+    	<AppenderRef ref="CONSOLE"></AppenderRef>
+    </Logger>
+    <Logger name="jdbc.connection" level="WARN">
+    	<AppenderRef ref="CONSOLE"></AppenderRef>
+    </Logger>
+    <Logger name="jdbc.resultset" level="WARN">
+    	<AppenderRef ref="CONSOLE"></AppenderRef>
+    </Logger>
   </Loggers>
 </Configuration>
