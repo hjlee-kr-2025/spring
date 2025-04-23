@@ -104,6 +104,20 @@
 		    <artifactId>log4j-layout-template-json</artifactId>
 		    <version>${org.log4j2-version}</version> <!-- Log4j2 버전에 맞게 조정 -->
 		</dependency>
+		
+		<!-- 데이터베이스 - MySQL -->
+		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>8.4.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>6.3.0</version>
+		</dependency>
 	</dependencies>
   <build>
     <plugins>
