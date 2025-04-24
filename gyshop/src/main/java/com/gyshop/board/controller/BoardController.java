@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gyshop.board.service.BoardService;
 import com.gyshop.board.vo.BoardVO;
@@ -27,14 +28,22 @@ public class BoardController {
 		model.addAttribute("list", service.list());
 	}
 	
-	@GetMapping("/writeForm.do")
+	@GetMapping("/write.do")
 	public void writeForm() {
-		log.info("writeForm.do");
+		log.info("write.do -- Get");
 	}
 	
 	@PostMapping("/write.do")
-	public void write(BoardVO vo) {
+	public String write(BoardVO vo, RedirectAttributes rttr) {
+		
+		log.info("write.do -- Post");
+		
 		log.info(vo);
 		
+		service.write(vo);
+		
+		rttr.addFlashAttribute("result", vo.getNo());
+
+		return "redirect:list.do";
 	}
 }

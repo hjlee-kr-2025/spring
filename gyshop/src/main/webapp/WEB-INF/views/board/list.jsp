@@ -11,11 +11,12 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">일반게시판 리스트</h1>
                     
+     								<!-- https://datatables.net/ -->               
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                         		<div class="float-right">
-                        			<a class="btn btn-primary" href="writeForm.do"
+                        			<a class="btn btn-primary" href="write.do"
                         				>글쓰기</a>
                         		</div>
                             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
@@ -52,5 +53,13 @@
 
                 </div>
                 <!-- /.container-fluid -->
+
+
+<script type="text/javascript">
+$(function(){
+	var result = '<c:out value="${result}" />';
+	console.log(result);
+});
+</script>
 
 <%@include file="../includes/footer.jsp" %>
