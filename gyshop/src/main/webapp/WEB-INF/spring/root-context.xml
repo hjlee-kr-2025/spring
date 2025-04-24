@@ -29,6 +29,7 @@
 	</bean>
 	
 	<mybatis-spring:scan base-package="com.gyshop.mapper"></mybatis-spring:scan>
+	<mybatis-spring:scan base-package="com.gyshop.*.mapper"></mybatis-spring:scan>
 	
 	
 	
