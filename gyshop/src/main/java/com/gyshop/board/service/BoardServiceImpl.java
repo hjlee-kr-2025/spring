@@ -31,6 +31,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardVO view(Long no, Integer inc) {
 		// TODO Auto-generated method stub
+		if (inc == 1) mapper.increase(no);
 		return mapper.view(no);
 	}
 

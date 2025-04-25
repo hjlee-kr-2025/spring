@@ -29,7 +29,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/write.do")
-	public void writeForm() {
+	public void write() {
 		log.info("write.do -- Get");
 	}
 	
@@ -44,6 +44,42 @@ public class BoardController {
 		
 		rttr.addFlashAttribute("result", vo.getNo());
 
+		return "redirect:list.do";
+	}
+	
+	@GetMapping("/view.do")
+	public void view(Long no, Integer inc, Model model) {
+		log.info("/view.do?no=&inc=");
+		model.addAttribute("vo", service.view(no, inc));
+	}
+	
+	@GetMapping("/update.do")
+	public void update(Long no, Model model) {
+		log.info("update.do -- Get");
+		BoardVO vo = service.view(no, 0);
+		
+		model.addAttribute("vo", vo);
+	}
+	
+	@PostMapping("/update.do") 
+	public String update(BoardVO vo, RedirectAttributes rttr) {
+		log.info("update.do -- Post");
+		
+		if (service.update(vo) == 1) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		
+		return "redirect:list.do";
+	}
+	
+	@PostMapping("/delete.do")
+	public String delete(BoardVO vo, RedirectAttributes rttr) {
+		log.info("delete.do");
+		
+		if (service.delete(vo) == 1) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		
 		return "redirect:list.do";
 	}
 }
