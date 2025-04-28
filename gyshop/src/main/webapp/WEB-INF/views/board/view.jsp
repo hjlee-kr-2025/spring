@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 
 <%@include file="../includes/header.jsp" %>
@@ -44,7 +45,32 @@
 				<a href="list.do?page=${param.page }&perPageNum=${param.perPageNum}" class="btn btn-secondary">리스트</a>
 		</div>
 	</div>
-                    
+  
+  <!-- 댓글 -->
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<button class="btn btn-primary btn-sm float-right">New Reply</button>
+					<i class="fas fa-comments"></i> Reply
+				</div>
+				<div class="card-body">
+					<ul class="chat list-group list-group-flush">
+						<li class="left clearfix" data-rno='12'>
+							<div>
+								<div class="header">
+									<small class="float-right text-muted">2018-01-01 13:13</small>
+									<strong class="primary-font">user00</strong>
+								</div>
+								<p>Good job!</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 </div>
 
 	<!-- Modal-->
@@ -72,5 +98,40 @@
         </div>
     </div>
 
+
+<script src="/resources/js/reply.js"></script>
+
+<script>
+$(function(){
+	console.log(replyService);
+	
+	var noValue = '<c:out value="${vo.no}" />';
+	var replyUL = $(".chat");
+	
+	showList();
+	
+	function showList() {
+	
+		replyService.list(noValue, function(list) {
+			
+			var str = "";
+			if (list == null || list.length == 0) {
+				replyUl.html("");
+				return;
+			}
+			for (var i = 0 , len = list.length || 0 ; i<len ; i++) {
+				console.log(list[i]);
+				str += "<li class='list-group-item' data-rno='" + list[i].rno + "'>";
+				str += "<div><div class='header'>";
+				str += "<small class='float-right text-muted'>" + replyService.displayTime(list[i].writeDate) + "</small>";
+				str += "<strong class='primary-font'>" + list[i].id+ "</strong></div>";
+				str += "<p>" + list[i].content + "</p></div></li>";
+			}
+			
+			replyUL.html(str);
+		});
+	}
+});
+</script>
 
 <%@include file="../includes/footer.jsp" %>
