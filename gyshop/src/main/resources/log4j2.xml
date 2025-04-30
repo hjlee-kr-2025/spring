@@ -28,5 +28,8 @@
     <Logger name="jdbc.resultset" level="WARN">
     	<AppenderRef ref="CONSOLE"></AppenderRef>
     </Logger>
+    <Logger name="_org.springframework.web" level="DEBUG">
+    	<AppenderRef ref="CONSOLE" />
+    </Logger>
   </Loggers>
 </Configuration>

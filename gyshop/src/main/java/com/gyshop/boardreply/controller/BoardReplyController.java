@@ -38,7 +38,7 @@ public class BoardReplyController {
 	
 	@GetMapping(value = "/list/{no}", produces = {
 			MediaType.APPLICATION_XML_VALUE,
-			MediaType.APPLICATION_JSON_UTF8_VALUE
+			MediaType.APPLICATION_JSON_VALUE
 	})
 	public ResponseEntity<List<BoardReplyVO>> list(@PathVariable("no") Long no) {
 		log.info("BoardReplyController list()----- no: " + no);
