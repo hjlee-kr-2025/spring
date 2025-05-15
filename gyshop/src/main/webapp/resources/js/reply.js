@@ -8,7 +8,7 @@ var replyService = (function(){
 	function list(param, callback, error) {
 		var no = param;
 		
-		$.getJSON("/boardreply/list/" + no + ".json", function(data){
+		$.getJSON("/boardreply/list/" + no, function(data){
 			if(callback) {
 				callback(data);
 			}

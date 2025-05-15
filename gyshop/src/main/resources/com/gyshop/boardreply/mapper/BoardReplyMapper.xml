@@ -3,23 +3,24 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gyshop.boardreply.mapper.BoardReplyMapper">
 
-<insert id="write">
-	insert into boardreply (content, no, id) 
-	values (#{content} , #{no}, #{id})
-</insert>
+	<insert id="write">
+		insert into boardreply (content, no, id)
+		values (#{content} , #{no}, #{id})
+	</insert>
 
-<select id="list" resultType="com.gyshop.boardreply.vo.BoardReplyVO">
-	select rno, content, no, id, writeDate
-	from boardreply where no = #{no}
-</select>
+	<select id="list"
+		resultType="com.gyshop.boardreply.vo.BoardReplyVO">
+		select rno, content, no, id, writeDate
+		from boardreply where no = #{no}
+	</select>
 
-<update id="update">
-	update boardreply set content = #{content}
-</update>
+	<update id="update">
+		update boardreply set content = #{content}
+	</update>
 
-<delete id="delete">
-	delete from boardreply where rno = #{rno}
-</delete>
+	<delete id="delete">
+		delete from boardreply where rno = #{rno}
+	</delete>
 
 
 

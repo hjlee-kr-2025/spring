@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration xmlns="https://logging.apache.org/xml/ns"
-               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-               xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
                    https://logging.apache.org/xml/ns
                    https://logging.apache.org/xml/ns/log4j-config-2.xsd">
-  <Appenders>
-    <Console name="CONSOLE" target="SYSTEM_OUT">
-      <PatternLayout pattern="%-5p: %c - %m%n"/>
-    </Console>
-    <File name="MAIN" fileName="logs/main.log">
-      <JsonTemplateLayout/>
-    </File>
-    <File name="DEBUG_LOG" fileName="logs/debug.log">
-      <PatternLayout pattern="%d [%t] %p %c - %m%n"/>
-    </File>
-  </Appenders>
-  <Loggers>
-    <Root level="INFO">
-      <AppenderRef ref="CONSOLE" />
-    </Root>
-    <Logger name="jdbc.audit" level="WARN">
-    	<AppenderRef ref="CONSOLE"></AppenderRef>
-    </Logger>
-    <Logger name="jdbc.connection" level="WARN">
-    	<AppenderRef ref="CONSOLE"></AppenderRef>
-    </Logger>
-    <Logger name="jdbc.resultset" level="WARN">
-    	<AppenderRef ref="CONSOLE"></AppenderRef>
-    </Logger>
-    <Logger name="_org.springframework.web" level="DEBUG">
-    	<AppenderRef ref="CONSOLE" />
-    </Logger>
-  </Loggers>
+	<Appenders>
+		<Console name="CONSOLE" target="SYSTEM_OUT">
+			<PatternLayout pattern="%-5p: %c - %m%n" />
+		</Console>
+		<File name="MAIN" fileName="logs/main.log">
+			<JsonTemplateLayout />
+		</File>
+		<File name="DEBUG_LOG" fileName="logs/debug.log">
+			<PatternLayout pattern="%d [%t] %p %c - %m%n" />
+		</File>
+	</Appenders>
+	<Loggers>
+		<Root level="INFO">
+			<AppenderRef ref="CONSOLE" />
+		</Root>
+		<Logger name="jdbc.audit" level="WARN">
+			<AppenderRef ref="CONSOLE"></AppenderRef>
+		</Logger>
+		<Logger name="jdbc.connection" level="WARN">
+			<AppenderRef ref="CONSOLE"></AppenderRef>
+		</Logger>
+		<Logger name="jdbc.resultset" level="WARN">
+			<AppenderRef ref="CONSOLE"></AppenderRef>
+		</Logger>
+		<Logger name="_org.springframework.web" level="DEBUG">
+			<AppenderRef ref="CONSOLE" />
+		</Logger>
+	</Loggers>
 </Configuration>

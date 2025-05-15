@@ -7,32 +7,37 @@
 				http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
 				http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
 				">
-	
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-	<!-- log4jdbc적용전
-		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/gyshop"></property>
-		 -->
-		
-		<!-- log4jdbc --> 
-		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://localhost:3306/gyshop"></property>
+		<!-- log4jdbc적용전 <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property> 
+			<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/gyshop"></property> -->
+
+		<!-- log4jdbc -->
+		<property name="driverClassName"
+			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+		<property name="jdbcUrl"
+			value="jdbc:log4jdbc:mysql://localhost:3307/gyshop"></property>
 		<property name="username" value="java"></property>
 		<property name="password" value="java"></property>
 	</bean>
-	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
 		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	
-	<mybatis-spring:scan base-package="com.gyshop.mapper"></mybatis-spring:scan>
-	<mybatis-spring:scan base-package="com.gyshop.*.mapper"></mybatis-spring:scan>
-	
-	
-	
-	<context:component-scan base-package="com.gyshop" />
-		
+
+	<mybatis-spring:scan
+		base-package="com.gyshop.mapper"></mybatis-spring:scan>
+	<mybatis-spring:scan
+		base-package="com.gyshop.*.mapper"></mybatis-spring:scan>
+
+
+
+	<context:component-scan
+		base-package="com.gyshop" />
+
 </beans>

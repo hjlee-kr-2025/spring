@@ -3,39 +3,38 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gyshop.board.mapper.BoardMapper">
 
-<select id="list" resultType="com.gyshop.board.vo.BoardVO">
-	select no, title, writer, writeDate, hit, comment from board order by no desc
-</select>
+	<select id="list" resultType="com.gyshop.board.vo.BoardVO">
+		select no, title, writer, writeDate, hit, comment from board order by no
+		desc
+	</select>
 
-<!-- 
-	<![CDATA[이곳에 기술된 것은 문자열자체로 인식]]>
- -->
- 
-<insert id="write">
-	insert into board (title, content, writer, pw)
-	values (#{title}, #{content}, #{writer}, #{pw})
-	
-	<!-- 등록된 글의 번호를 알고자할때 아래와 같이 구현(mySQL) -->
-	<selectKey keyProperty="no" order="AFTER" resultType="Long">
-		select no from board order by no desc limit 1 
-	</selectKey>
-</insert>
+	<!-- <![CDATA[이곳에 기술된 것은 문자열자체로 인식]]> -->
 
-<update id="increase">
-	update board set hit = hit + 1 where no = #{no}
-</update>
-<select id="view" resultType="com.gyshop.board.vo.BoardVO">
-	select no, title, content, writer, writeDate, hit, pw, comment from board
-	where no = #{no}
-</select>
+	<insert id="write">
+		insert into board (title, content, writer, pw)
+		values (#{title}, #{content}, #{writer}, #{pw})
 
-<delete id="delete">
-	delete from board where no = #{no} and pw = #{pw}
-</delete>
+		<!-- 등록된 글의 번호를 알고자할때 아래와 같이 구현(mySQL) -->
+		<selectKey keyProperty="no" order="AFTER" resultType="Long">
+			select no from board order by no desc limit 1
+		</selectKey>
+	</insert>
 
-<update id="update">
-	update board set title = #{title}, content = #{content}, writer = #{writer}
-	where no = #{no} and pw = #{pw}
-</update>
+	<update id="increase">
+		update board set hit = hit + 1 where no = #{no}
+	</update>
+	<select id="view" resultType="com.gyshop.board.vo.BoardVO">
+		select no, title, content, writer, writeDate, hit, pw, comment from board
+		where no = #{no}
+	</select>
+
+	<delete id="delete">
+		delete from board where no = #{no} and pw = #{pw}
+	</delete>
+
+	<update id="update">
+		update board set title = #{title}, content = #{content}, writer = #{writer}
+		where no = #{no} and pw = #{pw}
+	</update>
 
 </mapper>

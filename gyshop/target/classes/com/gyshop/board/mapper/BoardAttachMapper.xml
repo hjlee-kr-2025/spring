@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gyshop.board.mapper.BoardAttachMapper">
+
+	<select id="list" resultType="com.gyshop.board.vo.BoardAttachVO">
+		select uuid, uploadPath, fileName, fileType, no from boardattach
+		where no = #{no}
+	</select>
+
+	<!-- <![CDATA[이곳에 기술된 것은 문자열자체로 인식]]> -->
+
+	<insert id="insert">
+		insert into boardattach (uuid, uploadPath, fileName, fileType, no)
+		values (#{uuid}, #{uploadPath}, #{fileName}, #{fileType}, #{no})
+
+	</insert>
+
+
+	<delete id="delete">
+		delete from boardattach where uuid = #{uuid}
+	</delete>
+
+
+</mapper>
